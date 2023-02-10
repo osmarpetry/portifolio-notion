@@ -40,3 +40,9 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Sentry
+.sentryclirc
+
+# Sentry
+next.config.original.js

@@ -29,6 +29,7 @@
     "@keyvhq/core": "^1.6.26",
     "@keyvhq/redis": "^1.6.26",
     "@react-icons/all-files": "^4.1.0",
+    "@sentry/nextjs": "^7.37.1",
     "@vercel/analytics": "^0.1.8",
     "@vercel/og": "^0.1.0",
     "classnames": "^2.3.2",
