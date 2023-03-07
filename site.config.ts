@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Osmar Petry',
-  domain: 'osmarpetry.com',
+  domain: 'osmarpetry.dev',
   author: 'Osmar Petry',
 
   // open graph metadata (optional)
