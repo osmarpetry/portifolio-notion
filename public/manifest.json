@@ -1,6 +1,7 @@
 {
-  "name": "Next.js Notion Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "Osmar Petry - Personal Blog",
+  "short_name": "Osmar Petry",
+  "description": "Senior Software Engineer — React, TypeScript, Node.js, AWS/GCP",
   "icons": [
     {
       "src": "/favicon.png",
@@ -16,9 +17,17 @@
       "src": "/favicon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone"
+  "theme_color": "#0645ad",
+  "background_color": "#ffffff",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "scope": "/"
 }
+
