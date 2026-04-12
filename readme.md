@@ -173,6 +173,15 @@ To enable, just add a `NEXT_PUBLIC_POSTHOG_ID` environment variable, which will 
 
 If you're using Redis, analytics, or any other feature which requires environment variables, then you'll need to [add them to your Vercel project](https://vercel.com/docs/concepts/projects/environment-variables).
 
+If your root Notion page is not published to the web, you can still render it server-side by setting:
+
+```bash
+NOTION_TOKEN_V2='your_notion_token_v2_cookie'
+NOTION_ACTIVE_USER='your_notion_active_user_id'
+```
+
+The `notion-client` package uses these values to fetch private Notion content from the server. If you don't set them, your root page must be publicly accessible.
+
 If you want to test your redis builds with GitHub Actions, then you'll need to edit the [default build action](./.github/workflows/build.yml) to add `REDIS_HOST` and `REDIS_PASSWORD`. Here is an [example from my personal branch](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21). You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
 
 ## Contributing

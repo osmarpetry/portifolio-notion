@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
         site,
         pageId: rootNotionPageId,
         error: {
-          message: `Failed to load the root Notion page "${rootNotionPageId}". Make sure it is publicly accessible.`,
+          message: `Failed to load the root Notion page "${rootNotionPageId}". Make sure it is published to the web or provide NOTION_TOKEN_V2 and NOTION_ACTIVE_USER in the server environment.`,
           statusCode: 503
         }
       },
