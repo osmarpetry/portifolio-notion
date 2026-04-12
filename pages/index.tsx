@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { NotionPage } from '@/components/NotionPage'
-import { domain } from '@/lib/config'
+import { domain, rootNotionPageId, site } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 
 export const getStaticProps = async () => {
@@ -11,10 +11,17 @@ export const getStaticProps = async () => {
     return { props, revalidate: 10 }
   } catch (err) {
     console.error('page error', domain, err)
-
-    // we don't want to publish the error version of this page, so
-    // let next.js know explicitly that incremental SSG failed
-    throw err
+    return {
+      props: {
+        site,
+        pageId: rootNotionPageId,
+        error: {
+          message: `Failed to load the root Notion page "${rootNotionPageId}". Make sure it is publicly accessible.`,
+          statusCode: 503
+        }
+      },
+      revalidate: 10
+    }
   }
 }
 

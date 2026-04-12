@@ -29,27 +29,54 @@ async function getAllPagesImpl(
   rootNotionPageId: string,
   rootNotionSpaceId: string
 ): Promise<Partial<types.SiteMap>> {
+  const emptySiteMap: Pick<types.SiteMap, 'pageMap' | 'canonicalPageMap'> = {
+    pageMap: {},
+    canonicalPageMap: {}
+  }
+
   const getPage = async (pageId: string, ...args) => {
     console.log('\nnotion getPage', uuidToId(pageId))
     return notion.getPage(pageId, ...args)
   }
 
-  const pageMap = await getAllPagesInSpace(
-    rootNotionPageId,
-    rootNotionSpaceId,
-    getPage
-  )
+  let pageMap
+
+  try {
+    pageMap = await getAllPagesInSpace(
+      rootNotionPageId,
+      rootNotionSpaceId,
+      getPage
+    )
+  } catch (error) {
+    console.error('failed to build site map from notion', {
+      rootNotionPageId,
+      rootNotionSpaceId,
+      error
+    })
+    return emptySiteMap
+  }
 
   const canonicalPageMap = Object.keys(pageMap).reduce(
     (map, pageId: string) => {
       const recordMap = pageMap[pageId]
       if (!recordMap) {
-        throw new Error(`Error loading page "${pageId}"`)
+        console.warn('skipping unreadable notion page in site map', { pageId })
+        return map
       }
 
-      const canonicalPageId = getCanonicalPageId(pageId, recordMap, {
-        uuid
-      })
+      let canonicalPageId: string
+
+      try {
+        canonicalPageId = getCanonicalPageId(pageId, recordMap, {
+          uuid
+        })
+      } catch (error) {
+        console.warn('skipping notion page with invalid canonical id', {
+          pageId,
+          error
+        })
+        return map
+      }
 
       if (map[canonicalPageId]) {
         // you can have multiple pages in different collections that have the same id
