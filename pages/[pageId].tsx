@@ -3,7 +3,6 @@ import { GetStaticProps } from 'next'
 
 import { NotionPage } from '@/components/NotionPage'
 import { domain, isDev, site } from '@/lib/config'
-import { getSiteMap } from '@/lib/get-site-map'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
 
@@ -14,6 +13,13 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async (
 
   try {
     const props = await resolveNotionPage(domain, rawPageId)
+
+    if (props.error?.statusCode === 404) {
+      return {
+        notFound: true,
+        revalidate: 10
+      }
+    }
 
     return { props, revalidate: 10 }
   } catch (err) {
@@ -40,30 +46,10 @@ export async function getStaticPaths() {
     }
   }
 
-  let siteMap
-
-  try {
-    siteMap = await getSiteMap()
-  } catch (error) {
-    console.error('failed to collect static paths from notion', error)
-    return {
-      paths: [],
-      fallback: true
-    }
+  return {
+    paths: [],
+    fallback: 'blocking'
   }
-
-  const staticPaths = {
-    paths: Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
-      params: {
-        pageId
-      }
-    })),
-    // paths: [],
-    fallback: true
-  }
-
-  console.log(staticPaths.paths)
-  return staticPaths
 }
 
 export default function NotionDomainDynamicPage(props) {

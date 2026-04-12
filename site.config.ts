@@ -32,6 +32,10 @@ export default siteConfig({
   // whether or not to enable support for LQIP preview images (optional)
   isPreviewImageSupportEnabled: true,
 
+  // Keeping the Notion page id in production URLs avoids a full workspace crawl
+  // to resolve pretty slugs at request time, which is prone to Notion 429s.
+  includeNotionIdInUrls: true,
+
   // whether or not redis is enabled for caching generated preview images (optional)
   // NOTE: if you enable redis, you need to set the `REDIS_HOST` and `REDIS_PASSWORD`
   // environment variables. see the readme for more info

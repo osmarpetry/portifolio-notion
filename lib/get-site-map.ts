@@ -5,7 +5,7 @@ import * as config from './config'
 import * as types from './types'
 import { includeNotionIdInUrls } from './config'
 import { getCanonicalPageId } from './get-canonical-page-id'
-import { notion } from './notion-api'
+import { getPageWithRetry } from './notion-api'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -36,7 +36,7 @@ async function getAllPagesImpl(
 
   const getPage = async (pageId: string, ...args) => {
     console.log('\nnotion getPage', uuidToId(pageId))
-    return notion.getPage(pageId, ...args)
+    return getPageWithRetry(pageId, args[0])
   }
 
   let pageMap
@@ -45,7 +45,10 @@ async function getAllPagesImpl(
     pageMap = await getAllPagesInSpace(
       rootNotionPageId,
       rootNotionSpaceId,
-      getPage
+      getPage,
+      {
+        concurrency: 1
+      }
     )
   } catch (error) {
     console.error('failed to build site map from notion', {

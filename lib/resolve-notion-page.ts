@@ -2,7 +2,13 @@ import { ExtendedRecordMap } from 'notion-types'
 import { parsePageId } from 'notion-utils'
 
 import * as acl from './acl'
-import { environment, pageUrlAdditions, pageUrlOverrides, site } from './config'
+import {
+  environment,
+  includeNotionIdInUrls,
+  pageUrlAdditions,
+  pageUrlOverrides,
+  site
+} from './config'
 import { db } from './db'
 import { getSiteMap } from './get-site-map'
 import { getPage } from './notion'
@@ -46,6 +52,15 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     if (pageId) {
       recordMap = await getPage(pageId)
     } else {
+      if (includeNotionIdInUrls) {
+        return {
+          error: {
+            message: `Not found "${rawPageId}"`,
+            statusCode: 404
+          }
+        }
+      }
+
       // handle mapping of user-friendly canonical page paths to Notion page IDs
       // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
       const siteMap = await getSiteMap()
@@ -82,7 +97,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
   } else {
     pageId = site.rootNotionPageId
 
-    console.log(site)
     recordMap = await getPage(pageId)
   }
 
