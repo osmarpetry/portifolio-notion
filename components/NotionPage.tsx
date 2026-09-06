@@ -201,6 +201,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const footer = React.useMemo(() => <Footer />, [])
 
+  React.useEffect(() => {
+    if (config.isServer || !block) return
+    // add important objects to the window global for easy debugging
+    const g = window as any
+    g.pageId = pageId
+    g.recordMap = recordMap
+    g.block = block
+  }, [pageId, recordMap, block])
+
   if (router.isFallback) {
     return <Loading />
   }
@@ -218,14 +227,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       pageId,
       rootNotionPageId: site.rootNotionPageId
     })
-  }
-
-  if (!config.isServer) {
-    // add important objects to the window global for easy debugging
-    const g = window as any
-    g.pageId = pageId
-    g.recordMap = recordMap
-    g.block = block
   }
 
   const canonicalPageUrl =
