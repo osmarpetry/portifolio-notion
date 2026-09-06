@@ -4012,12 +4012,7 @@ normalize-package-data@^2.3.2:
     semver "2 || 3 || 4 || 5"
     validate-npm-package-license "^3.0.1"
 
-normalize-url@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-8.0.0.tgz#593dbd284f743e8dcf6a5ddf8fadff149c82701a"
-  integrity sha512-uVFpKhj5MheNBJRTiMZ9pE/7hD1QTeEvugSJW/OmLzAp78PB5O6adfMNTvmfKhXBkvCzC+rqifWcVYpGFwTjnw==
-
-normalize-url@^8.0.1:
+normalize-url@^8.0.0, normalize-url@^8.0.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-8.1.1.tgz#751a20c8520e5725404c06015fea21d7567f25ef"
   integrity sha512-JYc0DPlpGWB40kH5g07gGTrYuMqV653k3uBKY6uITPWds3M0ov3GaWGp9lbE3Bzngx8+XkfzgvASb9vk9JDFXQ==
@@ -4047,7 +4042,12 @@ notion-types@8.0.7:
   resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-8.0.7.tgz#22963dc5fe4693ff996be80b00b609807430a1df"
   integrity sha512-rSb8+VZ2ZKAIZ+3HnijwJp7/jQ7qZFNpr8UDC2ztNZynolpjvF+3z2S+Fu1VO05fXUhxECDfqFDkaPpz3Wtefw==
 
-notion-utils@7.10.0, notion-utils@^7.10.0:
+notion-types@8.0.8:
+  version "8.0.8"
+  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-8.0.8.tgz#58cf35127bcc9b2061e2463a71288afd3b19311d"
+  integrity sha512-crMgFadWAa1XSOMBAKfgy1eB9RW9e1v7j61lm0/ksalz91tCJwbu1sYbkbjvB1UWjC3jHhuKfwsT4FkUZh8z9w==
+
+notion-utils@7.10.0:
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-7.10.0.tgz#bcd546eaff726913063633131a7f3d0b8a1ae193"
   integrity sha512-Z/L+xOzVWM5wBHOqLu3PwCzA/11yzVExMpR8FUcwHbS60DDULSgZgipXQBzKOlbQMnB+04BOkSGDNan+AxfxmA==
@@ -4067,6 +4067,17 @@ notion-utils@8.0.7:
     memoize "^11.0.0"
     normalize-url "^9.0.1"
     notion-types "8.0.7"
+    p-queue "^9.3.3"
+
+notion-utils@^8.0.8:
+  version "8.0.8"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-8.0.8.tgz#910ba8474073f7d4b3d3ac4847fc7e069cc1984a"
+  integrity sha512-TGOmuJqOjOXeBhi1Tab8OyuAUSDrNi8C4skRpIwRGrBGZCKtql2WB9BwcAgNQCt+bwUlyQfmPmEnI7DwibythQ==
+  dependencies:
+    is-url-superb "^6.1.0"
+    memoize "^11.0.0"
+    normalize-url "^9.0.1"
+    notion-types "8.0.8"
     p-queue "^9.3.3"
 
 npm-run-all@^4.1.5:
