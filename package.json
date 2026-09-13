@@ -30,7 +30,7 @@
     "@keyvhq/redis": "^1.6.26",
     "@react-icons/all-files": "^4.1.0",
     "@sentry/nextjs": "^10.73.0",
-    "@vercel/analytics": "^0.1.8",
+    "@vercel/analytics": "^2.0.1",
     "@vercel/og": "^1.0.2",
     "classnames": "^2.5.1",
     "date-fns": "^2.29.3",
