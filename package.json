@@ -43,7 +43,7 @@
     "notion-client": "^7.10.0",
     "notion-types": "^7.10.0",
     "notion-utils": "^7.10.0",
-    "p-map": "^5.5.0",
+    "p-map": "^7.0.7",
     "p-memoize": "^8.0.0",
     "posthog-js": "^1.426.0",
     "react": "^18.2.0",
