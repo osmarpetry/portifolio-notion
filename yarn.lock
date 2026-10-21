@@ -3745,7 +3745,7 @@ notion-client@^7.10.0:
     ofetch "^1.4.1"
     p-map "^7.0.3"
 
-notion-types@7.10.0, notion-types@^7.10.0:
+notion-types@7.10.0:
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-7.10.0.tgz#471983703d4a63b73d7e07a92b334f70167dc3b4"
   integrity sha512-t57RdnGnup7NcMGJkrlshe3gXaFYOj565NL1Q1l/MrZZ/K2xbHO06PtBXDEFTFYjvxQagU0NzKzaSNKocU9e4Q==
@@ -3754,6 +3754,11 @@ notion-types@8.0.7:
   version "8.0.7"
   resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-8.0.7.tgz#22963dc5fe4693ff996be80b00b609807430a1df"
   integrity sha512-rSb8+VZ2ZKAIZ+3HnijwJp7/jQ7qZFNpr8UDC2ztNZynolpjvF+3z2S+Fu1VO05fXUhxECDfqFDkaPpz3Wtefw==
+
+notion-types@^8.0.8:
+  version "8.0.8"
+  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-8.0.8.tgz#58cf35127bcc9b2061e2463a71288afd3b19311d"
+  integrity sha512-crMgFadWAa1XSOMBAKfgy1eB9RW9e1v7j61lm0/ksalz91tCJwbu1sYbkbjvB1UWjC3jHhuKfwsT4FkUZh8z9w==
 
 notion-utils@7.10.0, notion-utils@^7.10.0:
   version "7.10.0"
